@@ -6,7 +6,7 @@ function App() {
   // const callBack = () => console.log('YEEEEEY!!');
   // const newSequence = ['w', 'j'];
   // const { sequence, rightSequence } = useKonamiCode(newSequence, callBack);
-  const { sequence, rightSequence } = useKonamiCode(newSequence, callBack);
+  const { sequence, rightSequence } = useKonamiCode();
 
   return (
     <div>
