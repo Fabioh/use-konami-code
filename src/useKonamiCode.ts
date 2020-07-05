@@ -2,23 +2,23 @@
 import { useEffect, useState } from "react";
 
 export const konamiSequence = [
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
-    "b",
-    "a",
+    'ArrowUp',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowLeft',
+    'ArrowRight',
+    'b',
+    'a',
 ];
 
 export default function useKonamiCode(codeSequence = konamiSequence, callback = () => {}) {
-    const [rightSequence, setRightSequence] = useState(false);
-    const [sequence, setSequence] = useState([]);
+    const [rightSequence, setRightSequence] = useState<boolean>(false);
+    const [sequence, setSequence] = useState<string[]>([]);
 
-    const onKeyDown = (event) => setSequence(prev => [...prev, event.key]);
+    const onKeyDown = (event: KeyboardEvent) => setSequence(prev => [...prev, event.key]);
 
     useEffect(() =>{
         sequence.forEach((key, i) => {
