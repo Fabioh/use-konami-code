@@ -18,7 +18,10 @@ function App() {
 
       <p>
         {sequence.map((key, i) => (
-          <b key={i}> {key} </b>
+          // eslint-disable-next-line react/no-array-index-key
+          <b key={i}>
+            {key}
+          </b>
         ))}
       </p>
 

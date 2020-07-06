@@ -4,16 +4,18 @@ import useKonamiCode, { konamiSequence } from './useKonamiCode';
 
 describe('useKonamiCode', () => {
   it('should return the user sequence', () => {
+    expect.hasAssertions();
     const { result } = renderHook(() => useKonamiCode());
 
     act(() => {
       window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
     });
 
-    expect(result.current.sequence).toEqual(['ArrowUp']);
+    expect(result.current.sequence).toStrictEqual(['ArrowUp']);
   });
 
   it('should reset the sequence if the user types a wrong sequence', () => {
+    expect.hasAssertions();
     const { result } = renderHook(() => useKonamiCode());
 
     act(() => {
@@ -21,10 +23,11 @@ describe('useKonamiCode', () => {
       window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k' }));
     });
 
-    expect(result.current.sequence).toEqual([]);
+    expect(result.current.sequence).toStrictEqual([]);
   });
 
   it('should return true when the user types a right sequence', () => {
+    expect.hasAssertions();
     const { result } = renderHook(() => useKonamiCode());
 
     konamiSequence.forEach((key) => {
@@ -37,6 +40,7 @@ describe('useKonamiCode', () => {
   });
 
   it('should return false when the user types a wrong sequence', () => {
+    expect.hasAssertions();
     const { result } = renderHook(() => useKonamiCode());
 
     act(() => {
@@ -47,6 +51,7 @@ describe('useKonamiCode', () => {
   });
 
   it('should allow different sequence and return true if the user types this sequence', () => {
+    expect.hasAssertions();
     const newSequence = ['w', 'j'];
     const { result } = renderHook(() => useKonamiCode(newSequence));
 
@@ -60,9 +65,10 @@ describe('useKonamiCode', () => {
   });
 
   it('should run a callback fn if right sequence was typed', () => {
+    expect.hasAssertions();
     const newSequence = ['w', 'j'];
     const callback = jest.fn();
-    const { result } = renderHook(() => useKonamiCode(newSequence, callback));
+    renderHook(() => useKonamiCode(newSequence, callback));
 
     newSequence.forEach((key) => {
       act(() => {
@@ -70,6 +76,6 @@ describe('useKonamiCode', () => {
       });
     });
 
-    expect(callback).toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledWith();
   });
 });
