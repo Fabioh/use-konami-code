@@ -2,7 +2,6 @@ import React from 'react';
 import useKonamiCode from './useKonamiCode';
 
 function App() {
-
   // const callBack = () => console.log('YEEEEEY!!');
   // const newSequence = ['w', 'j'];
   // const { sequence, rightSequence } = useKonamiCode(newSequence, callBack);
@@ -19,7 +18,10 @@ function App() {
 
       <p>
         {sequence.map((key, i) => (
-          <b key={i}> {key} </b>
+          // eslint-disable-next-line react/no-array-index-key
+          <b key={i}>
+            {key}
+          </b>
         ))}
       </p>
 
